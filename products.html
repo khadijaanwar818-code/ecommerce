@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Aura Curation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── 🧭 SITE HEADER ── -->
+  <header class="site-header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="nav-brand">
+        Aura<span>.</span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="nav-search-bar" class="search-input" placeholder="Search devices, accessories, desk setups..." />
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link active">Shop</a>
+        <a href="products.html?category=Office%20%26%20Desk%20Setup" class="nav-link">Desk Setups</a>
+        <a href="products.html?category=Personal%20Care%20Tech" class="nav-link">Personal Care</a>
+      </nav>
+
+      <!-- Nav Actions (Cart, Theme Switcher) -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="action-btn" aria-label="Toggle night mode">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Cart Button -->
+        <a href="cart.html" class="action-btn" aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <div class="listing-layout">
+      <!-- ── 🛠 SIDEBAR FILTERS ── -->
+      <aside class="glass-panel sidebar-filters">
+        <!-- Categories Filter Group -->
+        <div>
+          <h4 class="filter-group-title">Categories</h4>
+          <div class="filter-list">
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Audio & Sound" />
+              <span class="custom-checkbox"></span>
+              Audio & Sound
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Computers & Gaming" />
+              <span class="custom-checkbox"></span>
+              Computers & Gaming
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Smart Living & IoT" />
+              <span class="custom-checkbox"></span>
+              Smart Living & IoT
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Mobile & Gear" />
+              <span class="custom-checkbox"></span>
+              Mobile & Gear
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Creative Gear" />
+              <span class="custom-checkbox"></span>
+              Creative Gear
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Office & Desk Setup" />
+              <span class="custom-checkbox"></span>
+              Office & Desk Setup
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-cat-checkbox" value="Personal Care Tech" />
+              <span class="custom-checkbox"></span>
+              Personal Care Tech
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Filter Group -->
+        <div>
+          <h4 class="filter-group-title">Price Range</h4>
+          <div class="filter-list">
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-price-checkbox" value="under50" />
+              <span class="custom-checkbox"></span>
+              Under $50
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-price-checkbox" value="50to150" />
+              <span class="custom-checkbox"></span>
+              $50 - $150
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="filter-price-checkbox" value="over150" />
+              <span class="custom-checkbox"></span>
+              Over $150
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── 📦 PRODUCT CATALOG LISTING ── -->
+      <section>
+        <!-- Filter Info Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+          <span id="listing-result-count" style="color: var(--text-secondary); font-weight: 500;">0 items found</span>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Sort by:</span>
+            <select class="glass-panel" style="padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; cursor: pointer; background: var(--bg-card);">
+              <option>Default Curation</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Grid of Products -->
+        <div class="product-grid" id="listing-products-grid">
+          <!-- Rendered dynamically in app.js -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-container">
+          <button class="page-btn active">1</button>
+          <button class="page-btn" onclick="Cart.showToast('Page 2 is a simulation demonstration.')">2</button>
+          <button class="page-btn" onclick="Cart.showToast('Page 3 is a simulation demonstration.')">3</button>
+          <button class="page-btn" aria-label="Next page" onclick="Cart.showToast('Next Page is a simulation demonstration.')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ── 🏢 SITE FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Column 1: Brand -->
+      <div class="footer-brand">
+        <h3>Aura<span>.</span></h3>
+        <p>Designing modern, organic electronics and desk setups that harmonize with contemporary living and working spaces.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          <a href="#" class="social-link" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="#" class="social-link" aria-label="Follow us on Pinterest"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-7 17.1c0-1.7.3-3.2.7-4.6l1.2-5c-.3-.7-.4-1.7-.4-2.7 0-3.8 2.7-4.6 4.7-4.6 2.3 0 4.1 1.7 4.1 4.2 0 3.2-1.4 5.3-3.1 5.3-1 0-1.8-.8-1.5-1.9l.9-3.8c.3-1.1.2-2.1-.5-2.1-1.3 0-2.8 1.4-2.8 4 0 2.2.8 3.7.8 3.7l-1 4.2c-.5 2-1 4-.8 6a10 10 0 1 0 10-10z"></path></svg></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Curation -->
+      <div>
+        <h4 class="footer-col-title">Collections</h4>
+        <div class="footer-links">
+          <a href="products.html?category=Audio%20%26%20Sound" class="footer-link">Acoustics</a>
+          <a href="products.html?category=Office%20%26%20Desk%20Setup" class="footer-link">Desk Setups</a>
+          <a href="products.html?category=Creative%20Gear" class="footer-link">Studio Gear</a>
+          <a href="products.html?category=Personal%20Care%20Tech" class="footer-link">Wellness Tech</a>
+        </div>
+      </div>
+
+      <!-- Column 3: About -->
+      <div>
+        <h4 class="footer-col-title">Explore</h4>
+        <div class="footer-links">
+          <a href="products.html" class="footer-link">All Products</a>
+          <a href="#" class="footer-link">Design Philosophy</a>
+          <a href="#" class="footer-link">Sustainability Report</a>
+          <a href="#" class="footer-link">Custom Orders</a>
+        </div>
+      </div>
+
+      <!-- Column 4: Newsletter -->
+      <div>
+        <h4 class="footer-col-title">Stay in Touch</h4>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">Subscribe to receive new collection launch previews and studio design blogs.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your email address" />
+          <button class="newsletter-btn" onclick="Cart.showToast('Thank you for subscribing to Aura!')" aria-label="Subscribe">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom copyrights -->
+    <div class="container footer-bottom">
+      <p>&copy; Aura Curation Inc. All rights reserved. Designed for aesthetic spaces.</p>
+      <p>Secure checkout enabled.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
